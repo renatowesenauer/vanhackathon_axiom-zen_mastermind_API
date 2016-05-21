@@ -39,7 +39,7 @@
 
 		function __construct()
 		{
-			$this->$user_guesses = array();
+			$this->user_guesses = array();
 		}
 	}
 ?>

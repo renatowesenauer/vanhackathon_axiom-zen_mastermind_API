@@ -25,13 +25,6 @@
 		public $game_key;
 
 		/** 
-		 * Stores info if game is multiplayer or not
-		 * @access public
-		 * @var string 
-		 */	
-		public $multiplayer;
-
-		/** 
 		 * Stores creation date
 		 * @access public
 		 * @var string 
@@ -50,12 +43,12 @@
 		 * @access public
 		 * @var array 
 		 */
-		public $user;
+		public $users;
 
 		function __construct()
 		{
 			$this->colors = array();
-			$this->user = array();
+			$this->users = array();
 		}
 	}
 ?>

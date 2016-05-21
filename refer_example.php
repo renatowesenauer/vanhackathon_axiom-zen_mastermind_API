@@ -1,6 +1,6 @@
 <?php
 
-    $params = array("user_name" => "renato_wesenauer");    
+    $params = array("user_name" => "jose_silva");    
     $params_json = json_encode($params); 
 
     $context = stream_context_create(array(
@@ -12,5 +12,9 @@
 			    )
 			));
 
-    echo(file_get_contents("http://".$_SERVER["SERVER_NAME"]."/new_game", null, $context));
+    $data = file_get_contents("http://".$_SERVER["SERVER_NAME"]."/new_game", null, $context);
+
+    echo("<pre>");
+    print_r(json_decode($data, true));
+    echo("</pre>");
 ?>	

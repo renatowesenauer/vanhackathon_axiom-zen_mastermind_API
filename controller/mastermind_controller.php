@@ -37,21 +37,47 @@
 		 */
 		public function new_game()
 		{
-			$vars = $this->validate_new_game();
-
-			if (count($this->error_messages) == 0)
+			try
 			{
-				$mastermind = new mastermind();
-				$mastermind->new_game($this->post_vars["user_name"]);
+				$cod_http_status = 200;
+				$data_return = array();
+				$vars = $this->validate_new_game();
+
+				if (count($this->error_messages) == 0)
+				{
+					$mastermind = new mastermind();
+					$game = $mastermind->new_game($this->post_vars["user_name"], config::$total_colors_game);
+
+					$colors_short = array();
+					if (is_array($game->colors) && count($game->colors) > 0)
+					{
+						foreach ($game->colors as $color) 
+						{
+							$colors_short[] = $color->short_name;
+						}
+					}
+
+					$data_return = array(
+						"colors" => $colors_short,
+						"game_key" => $game->game_key,
+						"code_length" => config::$total_colors_game,
+						"num_guesses" => 0,
+						"past_results" => array(),
+						"solved" => false	
+					);
+				}
+				else
+				{
+					$cod_http_status = 400;
+					$data_return = $this->error_messages;
+				}
+			}
+			catch (Exception $e)
+			{
+				$cod_http_status = 500;
 			}
 
-			echo("<pre>");
-			print_r($vars);
-			echo("</pre>");
-
-			echo("<pre>");
-			print_r($this->error_messages);
-			echo("</pre>");
+			$this->print_return_api($cod_http_status, $data_return);
 		}
 
 		/** 
@@ -70,5 +96,29 @@
 
 			return $return;
 		}
+
+		private function print_return_api($cod_http_status, $data_return)
+		{
+			$view = array(
+				"http_status_code" => $cod_http_status,
+				"http_status_msg" => $this->status_http($cod_http_status),
+				"data" => $data_return
+			);
+
+			require("view/return_api_view.php");
+		}
+
+		private function status_http($cod_http_status) 
+	    {
+	        $status_http = array(  
+	            200 => 'OK',             
+	            400 => 'An unhandled user exception occurred', 
+	            403 => 'You don\'t have access', 
+	            404 => 'Not Found', 
+	            405 => 'Method Not Allowed', 
+	            500 => 'Internal Server Error', 
+	        ); 
+	        return (array_key_exists($cod_http_status, $status_http) ? $status_http[$cod_http_status] : $status_http[500]); 
+	    } 
 	}
 ?>

@@ -4,6 +4,7 @@
 
 	$method = $_GET["method"];
 
+	require_once("config.php");
 	require_once("controller/mastermind_controller.php");
 	require_once("model/mastermind.php");
 
