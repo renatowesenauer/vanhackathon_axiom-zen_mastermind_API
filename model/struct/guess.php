@@ -29,10 +29,30 @@
 		public $near;
 
 		/** 
+		 * Stores a user of guess
+		 * @access public
+		 * @var user 
+		 */
+		public $user;
+
+		/** 
+		 * Stores the combination of colors
+		 * @access public
+		 * @var array 
+		 */
+		public $colors;
+
+		/** 
 		 * Stores creation date
 		 * @access public
 		 * @var string 
 		 */
 		public $creation_date;
+
+		function __construct()
+		{
+			$this->colors = array();
+			$this->user = new user();
+		}
 	}
 ?>

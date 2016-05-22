@@ -22,10 +22,10 @@
 		 */
 		function __construct() 
 		{
-			$this->host = "localhost";
-			$this->user = "root";
-			$this->password = "";
-			$this->db = "mastermind_db";
+			$this->host = config::$connection_db["host"];
+			$this->user = config::$connection_db["user"];
+			$this->password = config::$connection_db["password"];
+			$this->db = config::$connection_db["database_name"];
 		}
 
 		/**

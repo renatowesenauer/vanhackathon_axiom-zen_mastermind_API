@@ -25,6 +25,13 @@
 		public $game_key;
 
 		/** 
+		 * Stores if game is solved (true or false)
+		 * @access public
+		 * @var boolean 
+		 */
+		public $solved;
+
+		/** 
 		 * Stores creation date
 		 * @access public
 		 * @var string 
@@ -45,10 +52,18 @@
 		 */
 		public $users;
 
+		/** 
+		 * Stores guesses of game
+		 * @access public
+		 * @var array 
+		 */
+		public $guesses;
+
 		function __construct()
 		{
 			$this->colors = array();
 			$this->users = array();
+			$this->guesses = array();
 		}
 	}
 ?>

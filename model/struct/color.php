@@ -41,5 +41,12 @@
 		 * @var string 
 		 */
 		public $creation_date;
+
+		/** 
+		 * Stores number of color in the game list
+		 * @access public
+		 * @var int 
+		 */
+		public $order;
 	}
 ?>
