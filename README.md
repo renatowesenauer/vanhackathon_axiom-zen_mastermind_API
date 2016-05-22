@@ -11,4 +11,4 @@ To go a bit further, try implementing a multiplayer component to the game where 
 # Install
 1) The aplication was developed in PHP
 
-2) Before running, create a MySQL database and change the config.php file. 
+2) Before running, create a MySQL database using "database.sql" file and change variables "connection_db" in the "config.php" file. 
