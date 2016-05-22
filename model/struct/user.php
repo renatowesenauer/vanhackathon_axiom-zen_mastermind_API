@@ -31,6 +31,13 @@
 		public $creation_date;
 
 		/** 
+		 * Stores game entry date
+		 * @access public
+		 * @var string 
+		 */
+		public $game_entry_date;
+
+		/** 
 		 * Stores guesses of user
 		 * @access public
 		 * @var array 

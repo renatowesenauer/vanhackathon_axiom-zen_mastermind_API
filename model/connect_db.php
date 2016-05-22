@@ -35,7 +35,15 @@
 		 */
 		public function open() 
 		{
-			$this->connect = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db, $this->user, $this->password);
+			try
+			{
+				$this->connect = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db, $this->user, $this->password);
+				$this->connect->exec("set names utf8");
+			}
+			catch(Exception $e)
+			{
+				throw new Exception($e);
+			}
 		}
 
 		/**

@@ -25,13 +25,6 @@
 		public $game_key;
 
 		/** 
-		 * Stores if game is solved (true or false)
-		 * @access public
-		 * @var boolean 
-		 */
-		public $solved;
-
-		/** 
 		 * Stores creation date
 		 * @access public
 		 * @var string 
@@ -59,8 +52,30 @@
 		 */
 		public $guesses;
 
+		/** 
+		 * Stores if game is solved (true or false)
+		 * @access public
+		 * @var boolean 
+		 */
+		public $solved;
+
+		/** 
+		 * Stores user that solved the game
+		 * @access public
+		 * @var user 
+		 */
+		public $user_solved;
+
+		/** 
+		 * Stores solution date
+		 * @access public
+		 * @var string 
+		 */
+		public $solution_date;
+
 		function __construct()
 		{
+			$this->user_solved = new user();
 			$this->colors = array();
 			$this->users = array();
 			$this->guesses = array();
